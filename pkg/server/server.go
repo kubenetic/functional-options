@@ -13,13 +13,9 @@ func NewServer(addr string, opts ...Option) *Server {
 		addr: addr,
 	}
 
-	options := &serverOptions{}
 	for _, opt := range opts {
-		opt(options)
+		opt(server)
 	}
-
-	server.timeout = options.getTimeout()
-	server.maxConnections = options.getMaxConnections()
 
 	return server
 }
